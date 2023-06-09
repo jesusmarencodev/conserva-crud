@@ -2,6 +2,8 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import dotenv from 'dotenv';
+import { Order } from "../entity/Order";
+import { Item } from "../entity/Item";
 dotenv.config();
 
 export const database = new DataSource({
@@ -13,7 +15,7 @@ export const database = new DataSource({
   database: process.env.POSTGRES_DB,
   synchronize: true,
   logging: true,
-  entities: [],
+  entities: [Order, Item],
 });
 
 
