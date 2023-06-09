@@ -1,18 +1,23 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-import { Order } from "../entity/Order";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  BaseEntity,
+} from 'typeorm';
+import { Order } from '../entity/Order';
 
 @Entity()
-export class Item {
+export class Item extends BaseEntity {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  @Column()
+  name: string;
 
-    @Column()
-    name: string;
+  @Column()
+  quantity: number;
 
-    @Column()
-    quantity: number;
-
-    @ManyToOne(() => Order, order => order.items)
-    order: Order;
+  @ManyToOne(() => Order, (order) => order.items, { lazy: true })
+  order: Order;
 }

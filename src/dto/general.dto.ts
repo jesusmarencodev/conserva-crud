@@ -1,10 +1,15 @@
-import { IsUUID, IsString, IsNotEmpty, IsNumber, IsArray, ValidateNested, IsOptional } from 'class-validator';
+import {
+  IsUUID,
+  IsString,
+  IsNotEmpty,
+  IsNumber,
+  IsArray,
+  ValidateNested,
+  IsOptional,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreateOrderDto {
-  @IsUUID()
-  id: string;
-
   @IsString()
   name: string;
 
@@ -14,18 +19,7 @@ export class CreateOrderDto {
   items: ItemDto[];
 }
 
-export class UpdateOrderDto {
-  @IsString()
-  name: string;
-}
-
-
 export class ItemDto {
-
-  @IsUUID()
-  @IsOptional()
-  id?: string;
-
   @IsString()
   @IsNotEmpty()
   name: string;
@@ -33,4 +27,9 @@ export class ItemDto {
   @IsNumber()
   @IsNotEmpty()
   quantity: number;
+}
+export class UpdateOrderDto {
+  @IsString()
+  name: string;
+  item: ItemDto;
 }

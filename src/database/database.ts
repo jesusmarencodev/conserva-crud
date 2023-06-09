@@ -1,13 +1,12 @@
-
-import "reflect-metadata";
-import { DataSource } from "typeorm";
+import 'reflect-metadata';
+import { DataSource } from 'typeorm';
 import dotenv from 'dotenv';
-import { Order } from "../entity/Order";
-import { Item } from "../entity/Item";
+import { Order } from '../entity/Order';
+import { Item } from '../entity/Item';
 dotenv.config();
 
 export const database = new DataSource({
-  type: "postgres",
+  type: 'postgres',
   host: process.env.DB_HOST,
   port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
   username: process.env.DB_USERNAME,
@@ -17,8 +16,3 @@ export const database = new DataSource({
   logging: true,
   entities: [Order, Item],
 });
-
-
-
-
-
