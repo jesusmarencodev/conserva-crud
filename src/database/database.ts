@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { DataSource } from 'typeorm';
+import { DataSource, createConnection } from 'typeorm';
 import dotenv from 'dotenv';
 import { Order } from '../entity/Order';
 import { Item } from '../entity/Item';
@@ -15,4 +15,6 @@ export const database = new DataSource({
   synchronize: true,
   logging: true,
   entities: [Order, Item],
+  subscribers: [],
+  migrations: [],
 });

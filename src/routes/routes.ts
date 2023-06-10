@@ -38,6 +38,7 @@ router.get('/:id', async (req: Request, res: Response) => {
     const order = await getOne(req.params.id);
     res.json(order);
   } catch (error) {
+    console.log(error);
     if (error instanceof OrderNotFoundException) {
       res.status(404).json({ error: error.message });
     } else {
